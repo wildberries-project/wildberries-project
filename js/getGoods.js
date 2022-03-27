@@ -43,28 +43,12 @@ const getGoods = () => {
 
             })
     }
-    const getAllData = () => {
-        fetch('https://test-e87c5-default-rtdb.firebaseio.com/db.json')
-            .then((res) => res.json())
-            .then((data) => {
-               
-               localStorage.setItem('goods', JSON.stringify(data));
 
-                if (window.location.pathname !== '/goods.html') {
-                    window.location.href = '/goods.html';
-                } else {
-                    renderGoods(data)
-                }
-
-            })
+    if(viewAllBtn){
+        viewAllBtn.addEventListener('click', () => getData());
     }
-
-    try {
-        viewAllBtn.addEventListener('click', () => getAllData());
-    } catch (e) {
-        e.message
-    }
-
+        
+    
 
     links.forEach((link) => {
         link.addEventListener('click', (event) => {
